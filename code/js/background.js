@@ -6,10 +6,19 @@
   //***
   chrome.commands.onCommand.addListener(function(command) {
     chrome.tabs.query({}, function(tabs) {
+      var uniq_domains   = [],
+          tab_domain     = null,
+          is_uniq_domain = null;
+
       tabs.forEach(function(tab) {
         var is_enabled       = window.sk_sites.check_enabled(tab.url);
         var is_temp_disabled = window.sk_sites.check_temp_disabled(tab.url);
-        if(is_enabled && !is_temp_disabled) {
+
+        tab_domain     = tab.url.split('//')[1].split('/')[0];
+        is_uniq_domain = uniq_domains.indexOf(tab_domain) === -1;
+
+        if(is_enabled && !is_temp_disabled && is_uniq_domain) {
+          uniq_domains.push(tab_domain);
           chrome.tabs.sendMessage(tab.id, {"action": command});
           console.log("SENT " + command + " TO " + tab.url);
         }
