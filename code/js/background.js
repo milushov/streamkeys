@@ -14,7 +14,7 @@
         var is_enabled       = window.sk_sites.check_enabled(tab.url);
         var is_temp_disabled = window.sk_sites.check_temp_disabled(tab.url);
 
-        tab_domain     = tab.url.split('//')[1].split('/')[0];
+        tab_domain     = tab.url.split("//")[1].split("/")[0];
         is_uniq_domain = uniq_domains.indexOf(tab_domain) === -1;
 
         if(is_enabled && !is_temp_disabled && is_uniq_domain) {
