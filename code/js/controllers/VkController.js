@@ -18,9 +18,9 @@
   });
 
   controller.init({
-    playPause: "#pd_play",
-    playNext: "#pd_next",
-    playPrev: "#pd_prev"
+    playPause: "#top_audio_player.top_audio_player_enabled .top_audio_player_play",
+    playNext: "#top_audio_player.top_audio_player_enabled .top_audio_player_next",
+    playPrev: "#top_audio_player.top_audio_player_enabled .top_audio_player_prev"
   });
 
   controller.selector_playcontrols = "#pad_cont";
